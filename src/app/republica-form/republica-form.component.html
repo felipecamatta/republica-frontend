@@ -1,0 +1,103 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="getRepublicaService().form">
+    <div class="container">
+        <input type="hidden" formControlName="$key">
+        <mat-form-field>
+            <input formControlName="nome" matInput placeholder="Nome" [(ngModel)]="republica.nome" name="nome">
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="endereco" matInput placeholder="Endereco" [(ngModel)]="republica.endereco"
+                name="endereco">
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="numeroVagas" matInput type="number" placeholder="Numero de Vagas"
+                [(ngModel)]="republica.numeroVagas" name="numeroVagas">
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select formControlName="tipoLocacao" placeholder="Tipo de Locação" [(ngModel)]="republica.tipoLocacao"
+                name="tipoLocacao">
+                <mat-option value="Apartamento">Apartamento</mat-option>
+                <mat-option value="Casa">Casa</mat-option>
+            </mat-select>
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select formControlName="genero" placeholder="Gênero" [(ngModel)]="republica.genero" name="genero">
+                <mat-option value="Feminina">Feminina</mat-option>
+                <mat-option value="Masculina">Masculina</mat-option>
+                <mat-option value="Unissex">Unissex</mat-option>
+            </mat-select>
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+<!--
+        <mat-form-field>
+            <input formControlName="integrantes" matInput placeholder="Integrantes" [(ngModel)]="republica.integrantes"
+                name="integrantes">
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+    -->
+
+        <mat-form-field>
+            <input formControlName="numeroComodos" matInput type="number" placeholder="Nº de Cômodos"
+                [(ngModel)]="republica.numeroComodos" name="numeroComodos">
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea formControlName="utensilios" matInput placeholder="Utensílios" [(ngModel)]="republica.utensilios"
+                name="utensilios"></textarea>
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea formControlName="diferencial" matInput placeholder="Diferencial"
+                [(ngModel)]="republica.diferencial" name="diferencial"></textarea>
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="numeroVagasDisponiveis" matInput type="number" placeholder="Nº de Vagas Disponíveis"
+                [(ngModel)]="republica.numeroVagasDisponiveis" name="numeroVagasDisponiveis">
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea formControlName="descricao" matInput placeholder="Descrição" [(ngModel)]="republica.descricao"
+                name="descricao"></textarea>
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select formControlName="representante" placeholder="Representante"
+                [(ngModel)]="republica.representante" name="representante">
+                <mat-option *ngFor="let representante of moradores" [value]="representante">
+                    {{ representante.nome }}</mat-option>
+            </mat-select>
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="link" matInput placeholder="Link da Rede Social" [(ngModel)]="republica.link"
+                name="link">
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+
+        <!--
+        <mat-form-field>
+            <mat-select formControlName="curso" placeholder="Curso" [(ngModel)]="republica.curso" name="curso">
+                <mat-option value="Agronomia">Agronomia</mat-option>
+                <mat-option value="Fisica">Física</mat-option>
+            </mat-select>
+            <mat-error>Este campo é obrigatório.</mat-error>
+        </mat-form-field>
+        -->
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="getRepublicaService().form.invalid">Cadastrar</button>
+    </div>
+</form>

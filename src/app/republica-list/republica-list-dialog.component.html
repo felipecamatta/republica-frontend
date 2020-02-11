@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>{{ data.nome }}</h1>
+<div mat-dialog-content>
+    <p><b><h4>Endereço: </h4></b>{{ data.endereco }}</p>
+    <p><b><h4>Capacidade (Pessoas): </h4></b>{{ data.numeroVagas }}</p>
+    <p><b><h4>Tipo da Locação: </h4></b>{{ data.tipoLocacao }}</p>
+    <p><b><h4>Gênero: </h4></b>{{ data.genero }}</p>
+    <p><b><h4>Moradores: </h4></b>
+        <ol>
+            <li *ngFor="let morador of data.moradores">
+                    {{ morador.nome }}
+            </li>
+        </ol>
+    <p><b><h4>Número de Comôdos: </h4></b>{{ data.numeroComodos }}</p>
+    <p><b><h4>Utensílios: </h4></b>{{ data.utensilios }}</p>
+    <p><b><h4>Diferencial: </h4></b>{{ data.diferencial }}</p>
+    <p><b><h4>Vagas Dísponiveis: </h4></b>{{ data.numeroVagasDisponiveis }}</p>
+    <p><b><h4>Descrição: </h4></b>{{ data.descricao }}</p>
+    <p><b><h4>Representante: </h4></b>{{ data.representante.nome }}</p>
+    <p><b><h4>Link: </h4></b><a>{{ data.link }}</a></p>
+    <a></a>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+</div>
