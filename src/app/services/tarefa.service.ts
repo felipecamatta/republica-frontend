@@ -15,7 +15,7 @@ export class TarefaService {
   private tarefa = new Tarefa();
 
   constructor(private http: HttpClient) {
-    this.tarefaUrl = 'https://republica-back.herokuapp.com/tarefas';
+    this.tarefaUrl = 'https://republica-backend.herokuapp.com/tarefas';
   }
 
   form: FormGroup = new FormGroup({

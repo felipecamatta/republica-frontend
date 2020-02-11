@@ -12,7 +12,7 @@ export class ChartService {
   chartUrl: string;
 
   constructor(private http: HttpClient) {
-    this.chartUrl = 'https://republica-back.herokuapp.com/chart';
+    this.chartUrl = 'https://republica-backend.herokuapp.com/chart';
   }
 
   public getChartData(republica: Republica, mes: number, ano: number): Observable<DataChart> {

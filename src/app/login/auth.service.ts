@@ -18,7 +18,7 @@ export class AuthenticationService {
   }
 
   authenticationService(username: string, password: string) {
-    return this.http.get(`https://republica-back.herokuapp.com/api/v1/basicauth`,
+    return this.http.get(`https://republica-backend.herokuapp.com/api/v1/basicauth`,
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;

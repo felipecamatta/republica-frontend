@@ -15,7 +15,7 @@ export class SolicitacaoService {
   private solicitacao: Number[];
 
   constructor(private http: HttpClient) {
-    this.solicitacaoUrl = 'https://republica-back.herokuapp.com/solicitacao';
+    this.solicitacaoUrl = 'https://republica-backend.herokuapp.com/solicitacao';
   }
 
   public solicitar(republica: Republica, morador: Morador){
