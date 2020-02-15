@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 export class AuthenticationService {
 
   // BASE_PATH: 'http://localhost:8080'
-  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
+  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
   public username: string;
   public password: string;
@@ -41,14 +41,14 @@ export class AuthenticationService {
   }
 
   isUserLoggedIn() {
-    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    if (user === null) { return false; }
-    return true;
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    if (user === null) return false
+    return true
   }
 
   getLoggedInUserName() {
-    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    if (user === null) { return ''; }
-    return user;
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    if (user === null)  return ''
+    return user
   }
 }

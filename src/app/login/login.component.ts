@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
-      this.router.navigate(['/']);
+      this.router.navigate(['/republicas']);
     }, () => {
       this.invalidLogin = true;
       this.loginSuccess = false;

@@ -18,7 +18,9 @@ import { RepublicaFinancasGraficoComponent } from './republica-financas-grafico/
 
 const routes: Routes = [
   { path: 'republicas', component: RepublicaListComponent },
-  {path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent },
   { path: 'addrepublica', component: RepublicaFormComponent },
   { path: 'republicas/disponiveis', component: RepublicadisponivelListComponent },
   { path: 'republicas/addreceitasdespesas', component: RepublicaReceitaDespesaFormComponent },

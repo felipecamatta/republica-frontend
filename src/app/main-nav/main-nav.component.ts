@@ -11,6 +11,8 @@ import { NotificacaoListDialogComponent } from "../notification-list-dialog/noti
 import { LoginService } from "../services/login.service";
 import { Feedback } from "../models/feedback";
 import { FeedbackService } from "../services/feedback.service";
+import { AuthenticationService } from '../login/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-main-nav",
@@ -18,6 +20,7 @@ import { FeedbackService } from "../services/feedback.service";
   styleUrls: ["./main-nav.component.css"]
 })
 export class MainNavComponent implements OnInit {
+  isLoggedIn = false;
   morador: Morador;
   moradores: Morador[] = [];
   solicitacoes: Solicitacao[] = [];
@@ -36,7 +39,10 @@ export class MainNavComponent implements OnInit {
     private moradorService: MoradorService,
     private solicitacaoService: SolicitacaoService,
     private feedbackService: FeedbackService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +52,9 @@ export class MainNavComponent implements OnInit {
     });
 
     this.morador = this.loginService.getMorador();
-
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+    console.log('menu ->' + this.isLoggedIn);
+    
     this.atualizarListaSolicitacoes();
     this.atualizarListaFeedbacks();
   }
@@ -56,6 +64,10 @@ export class MainNavComponent implements OnInit {
     this.solicitacaoService.setMorador(value);
 
     this.ngOnInit();
+  }
+
+  handleLogout() {
+    this.authenticationService.logout();
   }
 
   visualizarNotificacoes(): void {
