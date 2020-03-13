@@ -12,7 +12,7 @@ export class HistoricoService {
   private historico = new Historico();
 
   constructor(private http: HttpClient) {
-    this.historicoURL = 'http://localhost:8080/morador/historicos';
+    this.historicoURL = 'https://republica-backend.herokuapp.com/morador/historicos';
   }
 
   public save(historico: Historico) {

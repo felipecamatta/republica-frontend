@@ -17,7 +17,7 @@ export class RepublicaService {
   private moradores: Morador[];
 
   constructor(private http: HttpClient) {
-    this.republicasUrl = 'http://localhost:8080/republicas';
+    this.republicasUrl = 'https://republica-backend.herokuapp.com/republicas';
   }
 
   form: FormGroup = new FormGroup({

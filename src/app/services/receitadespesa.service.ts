@@ -15,7 +15,7 @@ export class ReceitadespesaService {
   private receitaDespesa = new ReceitaDespesa();
 
   constructor(private http: HttpClient) {
-    this.receitaDespesaUrl = 'http://localhost:8080/republica/receitasdespesas';
+    this.receitaDespesaUrl = 'https://republica-backend.herokuapp.com/republica/receitasdespesas';
   }
 
   form: FormGroup = new FormGroup({

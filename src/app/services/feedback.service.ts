@@ -15,7 +15,7 @@ export class FeedbackService {
   private feedback = new Feedback();
 
   constructor(private http: HttpClient) {
-    this.feedbackUrl = 'http://localhost:8080/feedback';
+    this.feedbackUrl = 'https://republica-backend.herokuapp.com/feedback';
   }
 
   form: FormGroup = new FormGroup({
