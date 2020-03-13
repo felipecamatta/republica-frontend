@@ -13,10 +13,11 @@
             <td mat-cell *matCellDef="let morador"> {{morador.nome}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="historico">
+        <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let morador">
                 <button mat-flat-button color="accent" (click)="onHistorico(morador)">Historico</button>
+                <button mat-flat-button color="accent" (click)="onConvidar(morador)">Convidar</button>
             </td>
         </ng-container>
 

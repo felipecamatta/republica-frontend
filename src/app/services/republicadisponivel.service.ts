@@ -12,7 +12,7 @@ export class RepublicadisponivelService {
   private republica = new Republica()
 
   constructor(private http: HttpClient) {
-    this.republicasDisponiveisUrl = 'https://republica-backend.herokuapp.com/republicas/disponiveis';
+    this.republicasDisponiveisUrl = 'http://localhost:8080/republicas/disponiveis';
   }
 
   public findAll(): Observable<Republica[]> {

@@ -1,9 +1,10 @@
 import { Morador } from './morador'
+import { Republica } from './republica';
 
 export class Historico {
-    id: number
-    nomeRepublica: String
-    dataSaida: Date
-    dataEntrada: Date
-    morador: Morador
+    id: number;
+    morador: Morador;
+    republica: Republica;
+    dataEntrada: Date;
+    dataSaida: Date;
 }

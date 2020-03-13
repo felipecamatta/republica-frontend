@@ -15,7 +15,7 @@ export class ReceitadespesaService {
   private receitaDespesa = new ReceitaDespesa();
 
   constructor(private http: HttpClient) {
-    this.receitaDespesaUrl = 'https://republica-backend.herokuapp.com/republica/receitasdespesas';
+    this.receitaDespesaUrl = 'http://localhost:8080/republica/receitasdespesas';
   }
 
   form: FormGroup = new FormGroup({
@@ -29,14 +29,6 @@ export class ReceitadespesaService {
     dataVencimentoRecebimento: new FormControl('', Validators.required),
     efetivado: new FormControl('', Validators.required)
   });
-
-  public test(): Observable<ReceitaDespesa[]> {
-    return this.http.get<ReceitaDespesa[]>(`${this.receitaDespesaUrl}/republica/1`);
-  }
-
-  public findAll(): Observable<ReceitaDespesa[]> {
-    return this.http.get<ReceitaDespesa[]>(this.receitaDespesaUrl);
-  }
 
   public save(receitaDespesa: MoradorReceitaDespesaDto) {
     return this.http.post<MoradorReceitaDespesaDto>(this.receitaDespesaUrl, receitaDespesa);

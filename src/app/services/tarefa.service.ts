@@ -15,7 +15,7 @@ export class TarefaService {
   private tarefa = new Tarefa();
 
   constructor(private http: HttpClient) {
-    this.tarefaUrl = 'https://republica-backend.herokuapp.com/tarefas';
+    this.tarefaUrl = 'http://localhost:8080/tarefas';
   }
 
   form: FormGroup = new FormGroup({
@@ -33,10 +33,6 @@ export class TarefaService {
     return this.http.get<Tarefa[]>(`${this.tarefaUrl}/republica/${morador.republica.id}/morador/${morador.id}`);
   }
 
-  public test() {
-    return this.http.get<Tarefa[]>(`${this.tarefaUrl}/republica/1/morador/1`);
-  }
-
   public save(tarefaDto: TarefaDto) {
     return this.http.post<TarefaDto>(this.tarefaUrl, tarefaDto);
   }
@@ -50,7 +46,7 @@ export class TarefaService {
   }
 
   public realizarTarefa(morador: Morador, tarefa: Tarefa) {
-    return this.http.post<void>(`${this.tarefaUrl}/republica/${morador.republica.id}/morador/${morador.id}`, tarefa);
+    return this.http.post<void>(`${this.tarefaUrl}/republica/${morador.republica.id}/morador/${morador.id}/realizar`, tarefa);
   }
 
   public getTarefa() {

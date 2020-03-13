@@ -2,16 +2,14 @@ import { Morador } from './morador';
 import { Republica } from './republica';
 
 export class Feedback {
-
-    id : number;	
-    morador : Morador;
-    republica : Republica;
-    status: String;
-    tipo: String;
-    descricao: String;
+    id: number;
+    tipo: string;
     dataFeedback: Date;
+    descricao: string;
+    morador: Morador;
+    anonimo: boolean;
+    republica: Republica;
     dataSolucao: Date;
-    anonimo: boolean = false;
     idade: number;
- 
+    status: String;
 }

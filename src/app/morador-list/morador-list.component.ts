@@ -13,7 +13,7 @@ import { HistoricoDialogComponent } from '../historico-dialog/historico-dialog.c
 export class MoradorListComponent implements OnInit {
 
   moradores: Morador[];
-  displayedColumns: string[] = ['id', 'nome', 'historico'];
+  displayedColumns: string[] = ['id', 'nome', 'acoes'];
 
   constructor(private route: ActivatedRoute, private router: Router,
               private moradorService: MoradorService, private dialog: MatDialog) { }
@@ -29,5 +29,9 @@ export class MoradorListComponent implements OnInit {
       width: '600px',
       data: morador
     });
+  }
+
+  onConvidar(morador: Morador) {
+    
   }
 }

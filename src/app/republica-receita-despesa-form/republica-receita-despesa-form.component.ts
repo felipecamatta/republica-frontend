@@ -34,13 +34,7 @@ export class RepublicaReceitaDespesaFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.receitaDespesaDto = this.receitaDespesaService.getReceitaDespesa();
-    this.republicaService.findAll().subscribe(data => {
-      this.republicas = data;
-    });
-    this.republicaService.getMoradores(this.republica).subscribe(data => {
-      this.moradores = data;
-    });
+    //this.receitaDespesaDto = this.receitaDespesaService.getReceitaDespesa();
   }
 
   onSubmit() {
@@ -72,10 +66,6 @@ export class RepublicaReceitaDespesaFormComponent implements OnInit {
     } else {
       this.moradoresIncluidos.splice(this.moradoresIncluidos.indexOf(value), 1);
     }
-  }
-
-  getReceitaDespesaService() {
-    return this.receitaDespesaService;
   }
 
 }

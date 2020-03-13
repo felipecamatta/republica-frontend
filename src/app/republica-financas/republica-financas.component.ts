@@ -7,6 +7,8 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
+import { LoginService } from '../services/login.service';
+import { Morador } from '../models/morador';
 
 @Component({
   selector: "app-republica-financias",
@@ -17,6 +19,7 @@ export class RepublicaFinancasComponent implements OnInit {
   receitaDespesas: ReceitaDespesa[];
   despesaTotal: number;
   receitaTotal: number;
+  morador: Morador;
 
   displayedColumns: string[] = [
     "tipo",
@@ -29,17 +32,17 @@ export class RepublicaFinancasComponent implements OnInit {
   ];
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private receitaDespesaService: ReceitadespesaService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
     this.despesaTotal = 0;
     this.receitaTotal = 0;
 
-    this.receitaDespesaService.test().subscribe(data => {
+    this.receitaDespesaService.findReceitaDespesaByMorador(this.morador).subscribe(data => {
       this.receitaDespesas = data;
       this.receitaDespesas.forEach(element => {
         if (element.tipo === "Despesa") {

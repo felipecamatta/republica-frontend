@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Republica } from '../models/republica';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Morador } from '../models/morador';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class FeedbackService {
   private feedback = new Feedback();
 
   constructor(private http: HttpClient) {
-    this.feedbackUrl = 'https://republica-backend.herokuapp.com/feedback';
+    this.feedbackUrl = 'http://localhost:8080/feedback';
   }
 
   form: FormGroup = new FormGroup({
@@ -24,8 +25,12 @@ export class FeedbackService {
     anonimo: new FormControl(null)
   });
 
-  public find(republica: Republica): Observable<Feedback[]> {
+  public findByRepublica(republica: Republica): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(`${this.feedbackUrl}/republica/${republica.id}`);
+  }
+
+  public findByMorador(morador: Morador): Observable<Feedback[]> {
+    return this.http.get<Feedback[]>(`${this.feedbackUrl}/republica/${morador.republica.id}/morador/${morador.id}`);
   }
 
   public save(feedback: Feedback) {

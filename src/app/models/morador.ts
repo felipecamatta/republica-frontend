@@ -1,18 +1,18 @@
 import { Republica } from './republica';
 import { MoradorReceitaDespesa } from './morador-receita-despesa';
+import { Historico } from './historico';
 
 export class Morador {
     id: number;
-    nome: String;
-    apelido: String;
-    telefone: String;
-    link: String;
-    telefoneResponsavel1: String;
-    telefoneResponsavel2: String;
+    nome: string;
+    apelido: string;
+    telefone: string;
+    linkRedeSocial: string;
+    telefoneResponsavel1: string;
+    telefoneResponsavel2: string;
     sexo: String;
-    //instituicao: String;
-    //curso: String;
     representante: boolean;
     republica: Republica;
     moradorReceitaDespesas: MoradorReceitaDespesa[];
+    historico: Historico;
 }

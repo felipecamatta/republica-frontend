@@ -23,7 +23,7 @@ export class TarefaListComponent implements OnInit {
 
   ngOnInit() {
     this.morador = this.loginService.getMorador();
-    this.tarefaService.test().subscribe(data => {
+    this.tarefaService.findByMorador(this.morador).subscribe(data => {
       this.tarefas = data;
     });
   }
@@ -34,20 +34,19 @@ export class TarefaListComponent implements OnInit {
   }
 
   onDelete(tarefa: Tarefa) {
-    if (confirm('Deseja realmente excluir?')) {
+    if (confirm("Deseja realmente excluir?")) {
       this.tarefaService.delete(tarefa);
     }
   }
 
   onRealizar(tarefa: Tarefa) {
-    if (confirm('Deseja realização da tarefa?')) {
+    if (confirm("Deseja realização da tarefa?")) {
       this.tarefaService.realizarTarefa(this.morador, tarefa);
     }
   }
 
   onCreate() {
-    const tarefa = new Tarefa();
-    tarefa.republica = this.morador.republica;
+    let tarefa = new Tarefa();
     this.tarefaService.setTarefa(tarefa);
     this.router.navigate(['/addtarefa']);
   }

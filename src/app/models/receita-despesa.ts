@@ -3,13 +3,14 @@ import { MoradorReceitaDespesa } from './morador-receita-despesa';
 
 export class ReceitaDespesa {
     id: number;
-    republica: any;
-    tipo: String;
-    descricao: String;
+    republica: Republica;
+    tipo: string;
+    descricao: string;
     valor: number;
-    periodo: String;
+    numeroParcelas: number;
     dataLancamento: Date;
     dataVencimentoRecebimento: Date;
     efetivado: boolean;
+    aprovado: boolean;
     moradorReceitaDespesa: MoradorReceitaDespesa[];
 }

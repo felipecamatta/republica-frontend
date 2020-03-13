@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ReceitaDespesa } from '../models/receita-despesa';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReceitadespesaService } from '../services/receitadespesa.service';
+import { LoginService } from '../services/login.service';
+import { Morador } from '../models/morador';
 
 @Component({
   selector: 'app-republica-receita-despesa-list',
@@ -19,15 +21,18 @@ export class RepublicaReceitaDespesaListComponent implements OnInit {
     'dataVencimentoRecebimento',
     'acoes'
   ];
+  morador: Morador;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private receitadespesaService: ReceitadespesaService
+    private receitadespesaService: ReceitadespesaService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
-    this.receitadespesaService.findAll().subscribe(data => {
+    this.morador = this.loginService.getMorador();
+    this.receitadespesaService.findReceitaDespesaByMorador(this.morador).subscribe(data => {
       this.receitaDespesa = data;
     });
   }

@@ -13,17 +13,11 @@ import { RepublicaService } from '../services/republica.service';
 export class MoradorFormComponent implements OnInit {
 
   morador: Morador;
-  republica: Republica;
-  republicas: Republica[];
 
-  constructor(private route: ActivatedRoute, private router: Router,
-              private moradorService: MoradorService, private republicaService: RepublicaService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private moradorService: MoradorService) { }
 
   ngOnInit() {
     this.morador = this.moradorService.getMorador();
-    this.republicaService.findAll().subscribe(data => {
-      this.republicas = data;
-    });
   }
 
   onSubmit() {
@@ -38,9 +32,5 @@ export class MoradorFormComponent implements OnInit {
         alert('Morador editado com sucesso!');
       });
     }
-  }
-
-  getMoradorService() {
-    return this.moradorService;
   }
 }

@@ -28,7 +28,7 @@
         <th mat-header-cell *matHeaderCellDef> Data de Lançamento </th>
         <td mat-cell *matCellDef="let financas"> {{financas.dataLancamento | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
     </ng-container>
-
+    
     <ng-container matColumnDef="dataVencimentoRecebimento">
         <th mat-header-cell *matHeaderCellDef> Data de Vencimento / Recebimento</th>
         <td mat-cell *matCellDef="let financas"> {{financas.dataVencimentoRecebimento | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
@@ -40,8 +40,8 @@
             <button mat-flat-button color="primary" (click)="onUpdate(financas)">Editar</button>
             &nbsp;
             <button mat-flat-button color="primary" (click)="estornar(financas)">Estornar</button>
-            <!-- &nbsp;
-            <button mat-flat-button color="warn" (click)="onDelete(financas.id)">Excluir</button> -->
+            &nbsp;
+            <button mat-flat-button color="warn" (click)="onDelete(financas.id)">Excluir</button>
         </td>
     </ng-container>
 

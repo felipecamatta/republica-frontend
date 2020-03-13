@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from "@angular/material/table";
 import { MatButtonModule } from "@angular/material/button";
@@ -19,10 +19,6 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 import { AppComponent } from "./app.component";
-import {
-  RepublicaListComponent,
-  RepublicaListDialogComponent
-} from "./republica-list/republica-list.component";
 import { RepublicaFormComponent } from "./republica-form/republica-form.component";
 
 import { RepublicaService } from "./services/republica.service";
@@ -43,7 +39,6 @@ import {
 } from "./republica-financas/republica-financas.component";
 import { MoradorFinancasComponent } from "./morador-financas/morador-financas.component";
 import { MoradorFormComponent } from "./morador-form/morador-form.component";
-import { RepublicaMoradoresComponent } from "./republica-moradores/republica-moradores.component";
 import { NotificacaoListDialogComponent } from "./notification-list-dialog/notificacao-list-dialog.component";
 import { SolicitacaoService } from "./services/solicitacao.service";
 import { FeedbackFormComponent } from "./feedback-form/feedback-form.component";
@@ -53,40 +48,31 @@ import { MoradorListComponent } from './morador-list/morador-list.component';
 import { HistoricoDialogComponent } from './historico-dialog/historico-dialog.component';
 import { TarefaListComponent } from './tarefa-list/tarefa-list.component';
 import { TarefaFormComponent } from './tarefa-form/tarefa-form.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
+import { RepublicaGerenciaComponent } from './republica-gerencia/republica-gerencia.component';
 import { RepublicaFinancasGraficoComponent } from './republica-financas-grafico/republica-financas-grafico.component';
-import { RepublicaReceitaDespesaListComponent } from './republica-receita-despesa-list/republica-receita-despesa-list.component';
-import { HttpInterceptorService } from './services/http-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepublicaListComponent,
     RepublicaFormComponent,
     RepublicadisponivelListComponent,
     MainNavComponent,
-    RepublicaListDialogComponent,
     RepublicaReceitaDespesaFormComponent,
     RepublicaFinancasComponent,
+    RepublicaFinancasGraficoComponent,
     MoradorFinancasComponent,
     MoradorFormComponent,
-    RepublicaMoradoresComponent,
     NotificacaoListDialogComponent,
     FeedbackFormComponent,
     FeedbackListComponent,
     RepublicaFinancasDialogComponent,
-    RepublicaFinancasGraficoComponent,
-    RepublicaReceitaDespesaListComponent,
     MoradorListComponent,
     HistoricoDialogComponent,
     TarefaListComponent,
     TarefaFormComponent,
-    LoginComponent,
-    LogoutComponent
+    RepublicaGerenciaComponent
   ],
   entryComponents: [
-    RepublicaListDialogComponent,
     NotificacaoListDialogComponent,
     RepublicaFinancasDialogComponent,
     HistoricoDialogComponent
@@ -120,12 +106,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
     MatMomentDateModule,
     MatCheckboxModule
   ],
-  providers: [RepublicaService, SolicitacaoService,
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorService,
-    multi: true
-  }],
+  providers: [RepublicaService, SolicitacaoService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

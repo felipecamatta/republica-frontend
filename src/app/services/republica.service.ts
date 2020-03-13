@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Morador } from '../models/morador';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -16,29 +17,24 @@ export class RepublicaService {
   private moradores: Morador[];
 
   constructor(private http: HttpClient) {
-    this.republicasUrl = 'https://republica-backend.herokuapp.com/republicas';
+    this.republicasUrl = 'http://localhost:8080/republicas';
   }
 
-  public form: FormGroup = new FormGroup({
+  form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     nome: new FormControl('', Validators.required),
-    endereco: new FormControl('', Validators.required),
+    vantagens: new FormControl('', Validators.required),
     numeroVagas: new FormControl('', Validators.required),
-    tipoLocacao: new FormControl('', Validators.required),
+    tipoImovel: new FormControl('', Validators.required),
     genero: new FormControl('', Validators.required),
-    integrantes: new FormControl('', Validators.required),
-    numeroComodos: new FormControl('', Validators.required),
-    utensilios: new FormControl('', Validators.required),
-    diferencial: new FormControl('', Validators.required),
-    numeroVagasDisponiveis: new FormControl('', Validators.required),
-    descricao: new FormControl('', Validators.required),
-    representante: new FormControl('', Validators.required),
-    link: new FormControl('', Validators.required)
+    linkEstatuto: new FormControl('', ),
+    cep: new FormControl('', Validators.required),
+    estado: new FormControl('', Validators.required),
+    cidade: new FormControl('', Validators.required),
+    bairro: new FormControl('', Validators.required),
+    logradouro: new FormControl('', Validators.required),
+    pontoDeReferencia: new FormControl('', )
   });
-
-  public findAll(): Observable<Republica[]> {
-    return this.http.get<Republica[]>(this.republicasUrl);
-  }
 
   public find(id: number): Observable<Republica> {
     return this.http.get<Republica>(`${this.republicasUrl}/${id}`);

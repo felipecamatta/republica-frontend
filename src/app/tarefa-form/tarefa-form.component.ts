@@ -25,6 +25,7 @@ export class TarefaFormComponent implements OnInit {
                }
 
   ngOnInit() {
+    this.tarefa = this.tarefaService.getTarefa();
     this.morador = this.loginService.getMorador();
   }
 
@@ -54,10 +55,6 @@ export class TarefaFormComponent implements OnInit {
 
   onAtualizar() {
     this.morador = this.loginService.getMorador();
-  }
-
-  getForm() {
-    return this.tarefaService.form;
   }
 
 }

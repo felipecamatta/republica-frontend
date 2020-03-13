@@ -15,7 +15,7 @@ export class FeedbackFormComponent implements OnInit {
 
   constructor(private router: Router,
               private loginService: LoginService,
-              private feedbackService: FeedbackService) {
+              protected feedbackService: FeedbackService) { 
     this.feedback = feedbackService.getFeedback();
   }
 
@@ -25,8 +25,7 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.feedback.dataFeedback = new Date();
-
+    this.feedback.morador = this.loginService.getMorador();
     if (this.feedback.id === undefined) {
       this.feedbackService.save(this.feedback).subscribe(result => {
         this.router.navigate(['/feedback']);
@@ -38,9 +37,5 @@ export class FeedbackFormComponent implements OnInit {
         alert('Feedback editado com sucesso!');
       });
     }
-  }
-
-  getForm() {
-    return this.feedbackService.form;
   }
 }

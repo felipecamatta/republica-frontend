@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private moradorService: MoradorService) {
     moradorService.findAll()
     .subscribe(data => {
-      this.morador = data.pop();
+      this.morador = data[0];
     });
    }
 

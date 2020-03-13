@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="getMoradorService().form">
+<form (ngSubmit)="onSubmit()" [formGroup]="moradorService.form">
     <div class="container">
         <input type="hidden" formControlName="$key">
         <mat-form-field>
@@ -19,8 +19,8 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input formControlName="link" matInput placeholder="Link da Rede Social" [(ngModel)]="morador.link"
-                name="link">
+            <input formControlName="link" matInput placeholder="Link da Rede Social"
+                [(ngModel)]="morador.linkRedeSocial" name="link">
         </mat-form-field>
 
         <mat-form-field>
@@ -36,7 +36,10 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input formControlName="sexo" matInput placeholder="Sexo" [(ngModel)]="morador.sexo" name="sexo">
+            <mat-select formControlName="sexo" placeholder="Sexo" [(ngModel)]="morador.sexo" name="sexo">
+                <mat-option value="Masculino">Masculino</mat-option>
+                <mat-option value="Feminino">Feminino</mat-option>
+            </mat-select>
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
 
@@ -52,7 +55,8 @@
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
         -->
+
         <button type="submit" mat-raised-button color="primary"
-            [disabled]="getMoradorService().form.invalid">Cadastrar</button>
+            [disabled]="moradorService.form.invalid">Cadastrar</button>
     </div>
 </form>

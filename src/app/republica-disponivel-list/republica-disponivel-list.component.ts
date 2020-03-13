@@ -14,7 +14,7 @@ export class RepublicadisponivelListComponent implements OnInit {
 
   morador = new Morador();
   republicas: Republica[];
-  displayedColumns: string[] = ['id', 'nome', 'endereco', 'numeroVagas', 'tipoLocacao', 'genero', /*'integrantes',*/ 'numeroComodos', 'utensilios', 'diferencial', 'numeroVagasDisponiveis', 'descricao', 'representante', 'link', 'solicitar'/*, 'curso'*/];
+  displayedColumns: string[] = ['nome', 'endereco', 'numeroVagas', 'tipoImovel', 'genero', 'numeroVagasDisponiveis', 'representante', 'solicitar'];
 
   constructor(private route: ActivatedRoute,
     private router: Router,

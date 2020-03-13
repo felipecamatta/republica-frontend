@@ -1,14 +1,3 @@
-<form>
-    <div class="container">
-        <mat-form-field>
-            <mat-select placeholder="Republica" name="republica" (selectionChange)="onChange($event.value)">
-                <mat-option *ngFor="let republica of republicas" [value]="republica">
-                    {{ republica.nome }}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-</form>
-
 <h2>Feedback</h2>
 <button mat-raised-button color="primary" (click)="onCreate()">Adicionar Feedback</button>
 <br>

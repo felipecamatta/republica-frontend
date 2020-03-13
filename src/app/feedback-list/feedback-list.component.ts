@@ -15,8 +15,6 @@ import { LoginService } from '../services/login.service';
 export class FeedbackListComponent implements OnInit {
 
   morador: Morador;
-  republica: Republica;
-  republicas: Republica[];
   feedbacks: Feedback[];
 
   displayedColumns: string[] = ['id', 'morador', 'republica', 'status',
@@ -28,13 +26,10 @@ export class FeedbackListComponent implements OnInit {
     private republicaService: RepublicaService) { }
 
   ngOnInit() {
-    this.republicaService.findAll().subscribe(data => {
-      this.republicas = data;
-    });
-    this.feedbackService.find(this.republica).subscribe(data => {
-      this.feedbacks = data;
-    });
     this.morador = this.loginService.getMorador();
+    this.feedbackService.findByMorador(this.morador).subscribe(data => {
+      this.feedbacks = data;
+    });    
   }
 
   onUpdate(feedback: Feedback) {
@@ -74,17 +69,10 @@ export class FeedbackListComponent implements OnInit {
 
   onCreate() {
     let feedback = new Feedback();
-    feedback.republica = this.republica;
+    feedback.republica = this.morador.republica;
     this.feedbackService.setFeedback(feedback);
     this.router.navigate(['/addfeedback']);
   }
-
-  onChange(value) {
-    this.republica = value;
-    this.feedbackService.find(this.republica).subscribe(data => {
-      this.feedbacks = data;
-    });
-    this.ngOnInit();
-  }
+  
 }
 

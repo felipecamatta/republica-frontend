@@ -11,19 +11,19 @@ import { HistoricoService } from '../services/historico.service';
   styleUrls: ['./historico-dialog.component.css']
 })
 export class HistoricoDialogComponent implements OnInit{
-  morador: Morador;
-  historicos: Historico[];
+  morador: Morador
+  historicos: Historico[]
 
   constructor(public dialogRef: MatDialogRef<HistoricoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
     private moradorService: MoradorService,
     private historicoService: HistoricoService) {
-    this.morador = data;
+    this.morador = data
   }
 
   ngOnInit() {
     this.historicoService.getHistoricobyMorador(this.morador).subscribe(data => {
-      this.historicos = data;
+      this.historicos = data
     });
   }
 }

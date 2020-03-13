@@ -13,7 +13,7 @@ export class MoradorService {
   private morador = new Morador();
 
   constructor(private http: HttpClient) {
-    this.moradoresUrl = 'https://republica-backend.herokuapp.com/moradores';
+    this.moradoresUrl = 'http://localhost:8080/moradores';
   }
 
   form: FormGroup = new FormGroup({

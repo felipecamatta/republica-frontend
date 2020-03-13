@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RepublicaService } from '../services/republica.service';
 import { Morador } from '../models/morador';
 import { MoradorService } from '../services/morador.service';
+import { Endereco } from '../models/endereco';
 
 @Component({
   selector: 'app-republica-form',
@@ -13,28 +14,23 @@ import { MoradorService } from '../services/morador.service';
 export class RepublicaFormComponent implements OnInit {
 
   republica: Republica;
+  endereco: Endereco;
   moradores: Morador[];
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private republicaService: RepublicaService, private moradorService: MoradorService) {
+    private republicaService: RepublicaService, private moradorService: MoradorService) {
     this.republica = new Republica();
+    this.endereco = new Endereco();
   }
 
   ngOnInit() {
     this.republica = this.republicaService.getRepublica();
-
-    if (this.republica.id !== undefined) {
-      this.republicaService.getMoradores(this.republica).subscribe(data => {
-        this.moradores = data;
-      });
-    } else {
-      this.moradorService.findAll().subscribe(data => {
-        this.moradores = data;
-      });
-    }
+    if (this.republica != null)
+      this.endereco = this.republica.endereco;
   }
 
   onSubmit() {
+    this.republica.endereco = this.endereco;
     if (this.republica.id === undefined) {
       this.republicaService.save(this.republica).subscribe(result => {
         this.router.navigate(['/republicas']);
@@ -46,10 +42,6 @@ export class RepublicaFormComponent implements OnInit {
         alert('República editada com sucesso!');
       });
     }
-  }
-
-  getRepublicaService() {
-    return this.republicaService;
   }
 
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RepublicaListComponent } from './republica-list.component';
+import { RepublicaGerenciaComponent } from './republica-gerencia.component';
 
-describe('RepublicaListComponent', () => {
-  let component: RepublicaListComponent;
-  let fixture: ComponentFixture<RepublicaListComponent>;
+describe('RepublicaGerenciaComponent', () => {
+  let component: RepublicaGerenciaComponent;
+  let fixture: ComponentFixture<RepublicaGerenciaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RepublicaListComponent ]
+      declarations: [ RepublicaGerenciaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RepublicaListComponent);
+    fixture = TestBed.createComponent(RepublicaGerenciaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

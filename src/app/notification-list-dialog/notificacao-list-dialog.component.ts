@@ -14,7 +14,7 @@ import { Feedback } from '../models/feedback';
 export class NotificacaoListDialogComponent {
 
   solicitacoes: Solicitacao[];
-  feedbacks: Feedback[];
+feedbacks: Feedback[];
 
   constructor(
     public dialogRef: MatDialogRef<NotificacaoListDialogComponent>,
@@ -35,12 +35,12 @@ export class NotificacaoListDialogComponent {
         if (response) {
           this.solicitacaoService.delete(solicitacao.id)
             .subscribe(result => {
-              var id = this.solicitacoes.indexOf(solicitacao);
+              const id = this.solicitacoes.indexOf(solicitacao);
               this.solicitacoes.splice(id, 1);
             });
-          alert("Morador adicionado com sucesso!");
+          alert('Morador adicionado com sucesso!');
         } else {
-          alert("Morador nao pode ser adicionado!");
+          alert('Morador nao pode ser adicionado!');
         }
       });
   }
@@ -48,7 +48,7 @@ export class NotificacaoListDialogComponent {
   public recusarMorador(solicitacao: Solicitacao) {
     this.solicitacaoService.delete(solicitacao.id)
       .subscribe(result => {
-        var id = this.solicitacoes.indexOf(solicitacao);
+        const id = this.solicitacoes.indexOf(solicitacao);
         this.solicitacoes.splice(id, 1);
         alert('Solicitação excluída com sucesso!');
       });
