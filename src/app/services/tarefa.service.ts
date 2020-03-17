@@ -15,13 +15,12 @@ export class TarefaService {
   private tarefa = new Tarefa();
 
   constructor(private http: HttpClient) {
-    this.tarefaUrl = 'https://republica-backend.herokuapp.com/tarefas';
+    this.tarefaUrl = 'http://localhost:8080/tarefas';
   }
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     descricao: new FormControl('', Validators.required),
-    dataAgendamento: new FormControl('', Validators.required),
     dataTermino: new FormControl('', Validators.required),
   });
 

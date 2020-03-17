@@ -19,14 +19,14 @@ export class TarefaFormComponent implements OnInit {
   morador: Morador;
 
   constructor(private router: Router,
-              private loginService: LoginService,
-              private tarefaService: TarefaService) {
-                this.tarefaDto = new TarefaDto();
-               }
+    private loginService: LoginService,
+    private tarefaService: TarefaService) {
+    this.tarefaDto = new TarefaDto();
+    this.morador = this.loginService.getMorador();
+  }
 
   ngOnInit() {
     this.tarefa = this.tarefaService.getTarefa();
-    this.morador = this.loginService.getMorador();
   }
 
   onSubmit() {
@@ -34,12 +34,12 @@ export class TarefaFormComponent implements OnInit {
       this.tarefaService.save(this.tarefaDto).subscribe(result => {
         console.log(this.tarefaDto);
         this.tarefaDto.republica = this.morador.republica;
-        this.router.navigate(['/tarefas']);
+        this.router.navigate(['/tarefasRepublica']);
         alert('Tarefa cadastrada com sucesso!');
       });
     } else {
       this.tarefaService.update(this.tarefa).subscribe(result => {
-        this.router.navigate(['/tarefas']);
+        this.router.navigate(['/tarefasRepublica']);
         alert('Tarefa atualizada com sucesso!');
       });
     }
@@ -51,10 +51,6 @@ export class TarefaFormComponent implements OnInit {
     } else {
       this.moradoresIncluidos.splice(this.moradoresIncluidos.indexOf(value), 1);
     }
-  }
-
-  onAtualizar() {
-    this.morador = this.loginService.getMorador();
   }
 
 }

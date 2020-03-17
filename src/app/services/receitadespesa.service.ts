@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MoradorReceitaDespesaDto } from '../models/morador-receita-despesa-dto';
 import { Morador } from '../models/morador';
+import { Republica } from '../models/republica';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ReceitadespesaService {
   private receitaDespesa = new ReceitaDespesa();
 
   constructor(private http: HttpClient) {
-    this.receitaDespesaUrl = 'https://republica-backend.herokuapp.com/republica/receitasdespesas';
+    this.receitaDespesaUrl = 'http://localhost:8080/republica/receitasdespesas';
   }
 
   form: FormGroup = new FormGroup({
@@ -40,6 +41,10 @@ export class ReceitadespesaService {
 
   public findReceitaDespesaByMorador(morador: Morador) {
     return this.http.get<ReceitaDespesa[]>(`${this.receitaDespesaUrl}/republica/${morador.republica.id}/morador/${morador.id}`);
+  }
+
+  public findReceitaDespesaByRepublica(republica: Republica) {
+    return this.http.get<ReceitaDespesa[]>(`${this.receitaDespesaUrl}/republica/${republica.id}`);
   }
 
   public pagar(morador: Morador, id: number) {

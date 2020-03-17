@@ -11,7 +11,10 @@ import { Morador } from '../models/morador';
   styleUrls: ['./republica-receita-despesa-list.component.css']
 })
 export class RepublicaReceitaDespesaListComponent implements OnInit {
+
+  morador: Morador;
   receitaDespesa: ReceitaDespesa[];
+
   displayedColumns: string[] = [
     'tipo',
     'descricao',
@@ -21,20 +24,21 @@ export class RepublicaReceitaDespesaListComponent implements OnInit {
     'dataVencimentoRecebimento',
     'acoes'
   ];
-  morador: Morador;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private receitadespesaService: ReceitadespesaService,
     private loginService: LoginService
-  ) {}
+  ) {
+    this.morador = this.loginService.getMorador();
+  }
 
   ngOnInit() {
-    this.morador = this.loginService.getMorador();
-    this.receitadespesaService.findReceitaDespesaByMorador(this.morador).subscribe(data => {
-      this.receitaDespesa = data;
-    });
+    if (this.morador.representante) {
+      this.receitadespesaService.findReceitaDespesaByRepublica(this.morador.republica).subscribe(data => {
+        this.receitaDespesa = data;
+      });
+    }
   }
 
   onCreate() {

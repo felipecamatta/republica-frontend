@@ -1,4 +1,3 @@
-<button mat-raised-button color="primary" (click)="onAtualizar()">Atualizar</button>
 <form (ngSubmit)="onSubmit()" [formGroup]="tarefaService.form">
   <div class="container">
     <input type="hidden" formControlName="$key" />
@@ -11,20 +10,11 @@
 
       <div>
         <label>Moradores: </label>
-        <section class="checkbox-section">
           <mat-checkbox #inputEl *ngFor="let morador of morador.republica.moradores" class="checkbox-margin"
             [value]="morador" (change)="onCheck(morador, inputEl.checked)">
             {{ morador.nome }}
           </mat-checkbox>
-        </section>
       </div>
-
-      <mat-form-field>
-        <input formControlName="dataAgendamento" matInput [matDatepicker]="picker" placeholder="Data de Lançamento"
-          [(ngModel)]="tarefaDto.dataAgendamento" name="dataAgendamento" disabled />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker disabled="false"></mat-datepicker>
-      </mat-form-field>
 
       <mat-form-field>
         <input formControlName="dataTermino" matInput [matDatepicker]="picker2"

@@ -11,6 +11,7 @@ import { NotificacaoListDialogComponent } from "../notification-list-dialog/noti
 import { LoginService } from "../services/login.service";
 import { Feedback } from "../models/feedback";
 import { FeedbackService } from "../services/feedback.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-main-nav",
@@ -36,7 +37,8 @@ export class MainNavComponent implements OnInit {
     private moradorService: MoradorService,
     private solicitacaoService: SolicitacaoService,
     private feedbackService: FeedbackService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -90,5 +92,9 @@ export class MainNavComponent implements OnInit {
         }
       });
     });
+  }
+
+  onCreateMorador() {
+    this.router.navigate(['/addmorador']);
   }
 }

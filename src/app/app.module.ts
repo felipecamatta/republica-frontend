@@ -31,7 +31,7 @@ import { MatListModule } from "@angular/material/list";
 import { RepublicadisponivelListComponent } from "./republica-disponivel-list/republica-disponivel-list.component";
 import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
-import { RepublicaReceitaDespesaFormComponent } from "./republica-receita-despesa-form/republica-receita-despesa-form.component";
+import { ReceitaDespesaFormComponent } from "./receita-despesa-form/receita-despesa-form.component";
 import { MatRadioModule } from "@angular/material/radio";
 import {
   RepublicaFinancasComponent,
@@ -46,10 +46,12 @@ import { FeedbackListComponent } from "./feedback-list/feedback-list.component";
 import { LoginService } from "./services/login.service";
 import { MoradorListComponent } from './morador-list/morador-list.component';
 import { HistoricoDialogComponent } from './historico-dialog/historico-dialog.component';
-import { TarefaListComponent } from './tarefa-list/tarefa-list.component';
 import { TarefaFormComponent } from './tarefa-form/tarefa-form.component';
 import { RepublicaGerenciaComponent } from './republica-gerencia/republica-gerencia.component';
 import { RepublicaFinancasGraficoComponent } from './republica-financas-grafico/republica-financas-grafico.component';
+import { MoradorGerenciaComponent } from './morador-gerencia/morador-gerencia.component';
+import { MoradorTarefaComponent } from './morador-tarefa/morador-tarefa.component';
+import { RepublicaTarefaComponent } from './republica-tarefa/republica-tarefa.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,7 @@ import { RepublicaFinancasGraficoComponent } from './republica-financas-grafico/
     RepublicaFormComponent,
     RepublicadisponivelListComponent,
     MainNavComponent,
-    RepublicaReceitaDespesaFormComponent,
+    ReceitaDespesaFormComponent,
     RepublicaFinancasComponent,
     RepublicaFinancasGraficoComponent,
     MoradorFinancasComponent,
@@ -68,9 +70,11 @@ import { RepublicaFinancasGraficoComponent } from './republica-financas-grafico/
     RepublicaFinancasDialogComponent,
     MoradorListComponent,
     HistoricoDialogComponent,
-    TarefaListComponent,
     TarefaFormComponent,
-    RepublicaGerenciaComponent
+    RepublicaGerenciaComponent,
+    MoradorGerenciaComponent,
+    MoradorTarefaComponent,
+    RepublicaTarefaComponent
   ],
   entryComponents: [
     NotificacaoListDialogComponent,

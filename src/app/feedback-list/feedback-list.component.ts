@@ -22,14 +22,14 @@ export class FeedbackListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
     private feedbackService: FeedbackService,
-    private loginService: LoginService,
-    private republicaService: RepublicaService) { }
+    private loginService: LoginService) {
+    this.morador = this.loginService.getMorador();
+  }
 
   ngOnInit() {
-    this.morador = this.loginService.getMorador();
-    this.feedbackService.findByMorador(this.morador).subscribe(data => {
+    this.feedbackService.findByRepublica(this.morador.republica).subscribe(data => {
       this.feedbacks = data;
-    });    
+    });
   }
 
   onUpdate(feedback: Feedback) {
@@ -53,7 +53,6 @@ export class FeedbackListComponent implements OnInit {
   }
 
   finalizar(feedback: Feedback) {
-
     if (this.morador.representante && feedback.status === 'RESOLUCAO SOLICITADA') {
       feedback.status = 'RESOLVIDA';
     } else {
@@ -73,6 +72,6 @@ export class FeedbackListComponent implements OnInit {
     this.feedbackService.setFeedback(feedback);
     this.router.navigate(['/addfeedback']);
   }
-  
+
 }
 

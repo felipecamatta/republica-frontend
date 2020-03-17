@@ -34,6 +34,7 @@ export class RepublicaGerenciaComponent implements OnInit {
       alert('República deletada!');
       this.router.navigate(['/']);
     });
+    this.ngOnInit();
   }
 
   onAdd(id: number) {
@@ -60,6 +61,7 @@ export class RepublicaGerenciaComponent implements OnInit {
       }
       this.ngOnInit();
     });
+    this.ngOnInit();
   }
 
   onSair(morador: Morador) {
@@ -75,6 +77,10 @@ export class RepublicaGerenciaComponent implements OnInit {
 
   onCriarRepublica() {
     this.router.navigate(['/addrepublica']);
+  }
+
+  onConvidarMorador() {
+    this.router.navigate(['/moradores']);
   }
 
 }

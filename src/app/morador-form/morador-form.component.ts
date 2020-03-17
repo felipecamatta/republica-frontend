@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Morador } from '../models/morador';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MoradorService } from '../services/morador.service';
-import { Republica } from '../models/republica';
-import { RepublicaService } from '../services/republica.service';
 
 @Component({
   selector: 'app-morador-form',
@@ -14,7 +12,7 @@ export class MoradorFormComponent implements OnInit {
 
   morador: Morador;
 
-  constructor(private route: ActivatedRoute, private router: Router, private moradorService: MoradorService) { }
+  constructor(private router: Router, private moradorService: MoradorService) { }
 
   ngOnInit() {
     this.morador = this.moradorService.getMorador();
@@ -32,5 +30,6 @@ export class MoradorFormComponent implements OnInit {
         alert('Morador editado com sucesso!');
       });
     }
+    this.router.navigate(['/']);
   }
 }

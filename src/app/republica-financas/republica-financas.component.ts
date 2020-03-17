@@ -16,6 +16,7 @@ import { Morador } from '../models/morador';
   styleUrls: ["./republica-financas.component.css"]
 })
 export class RepublicaFinancasComponent implements OnInit {
+
   receitaDespesas: ReceitaDespesa[];
   despesaTotal: number;
   receitaTotal: number;
@@ -36,22 +37,41 @@ export class RepublicaFinancasComponent implements OnInit {
     private receitaDespesaService: ReceitadespesaService,
     private dialog: MatDialog,
     private loginService: LoginService
-  ) {}
+  ) {
+    this.morador = this.loginService.getMorador();
+  }
 
   ngOnInit() {
     this.despesaTotal = 0;
     this.receitaTotal = 0;
 
-    this.receitaDespesaService.findReceitaDespesaByMorador(this.morador).subscribe(data => {
-      this.receitaDespesas = data;
-      this.receitaDespesas.forEach(element => {
-        if (element.tipo === "Despesa") {
-          this.despesaTotal += element.valor;
-        } else {
-          this.receitaTotal += element.valor;
-        }
-      });
-    });
+    if (this.morador.representante) {
+      this.receitaDespesaService
+        .findReceitaDespesaByRepublica(this.morador.republica)
+        .subscribe(data => {
+          this.receitaDespesas = data;
+          this.receitaDespesas.forEach(element => {
+            if (element.tipo === "Despesa") {
+              this.despesaTotal += element.valor;
+            } else {
+              this.receitaTotal += element.valor;
+            }
+          });
+        });
+    } else {
+      this.receitaDespesaService
+        .findReceitaDespesaByMorador(this.morador)
+        .subscribe(data => {
+          this.receitaDespesas = data;
+          this.receitaDespesas.forEach(element => {
+            if (element.tipo === "Despesa") {
+              this.despesaTotal += element.valor;
+            } else {
+              this.receitaTotal += element.valor;
+            }
+          });
+        });
+    }
   }
 
   onCreate() {
@@ -72,6 +92,12 @@ export class RepublicaFinancasComponent implements OnInit {
     });
   }
 
+  onPagar(id) {
+    this.receitaDespesaService.pagar(this.morador, id).subscribe();
+    alert('Finança Recebida/Paga!');
+    this.ngOnInit();
+  }
+
   viewChart() {
     this.router.navigate(['republica/financas/grafico']);
   }
@@ -87,7 +113,7 @@ export class RepublicaFinancasDialogComponent {
     public dialogRef: MatDialogRef<RepublicaFinancasDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ReceitaDespesa,
     private receitaDespesaService: ReceitadespesaService
-  ) {}
+  ) { }
 
   onConfirmarEstorno(recd: ReceitaDespesa) {
     this.receitaDespesaService.estornar(recd)
