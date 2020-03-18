@@ -4,6 +4,7 @@ import { Republica } from '../models/republica';
 import { RepublicadisponivelService } from '../services/republicadisponivel.service';
 import { Morador } from '../models/morador';
 import { SolicitacaoService } from '../services/solicitacao.service';
+import { RepublicaService } from '../services/republica.service';
 
 @Component({
   selector: 'app-republica-disponivel-list',
@@ -19,6 +20,7 @@ export class RepublicadisponivelListComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private republicaDisponivelService: RepublicadisponivelService,
+    private republicaService: RepublicaService,
     private solicitacaoService: SolicitacaoService) { }
 
   ngOnInit() {
@@ -41,5 +43,11 @@ export class RepublicadisponivelListComponent implements OnInit {
         alert('Para solicitar vaga em uma nova republica, '
         + 'promova um novo morador a representante!')
       }
+  }
+
+  buscar(name: String) {
+    this.republicaService.getRepublicasByName(name).subscribe(data => {
+      this.republicas = data;
+    })
   }
 }

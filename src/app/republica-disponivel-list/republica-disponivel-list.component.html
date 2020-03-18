@@ -1,4 +1,13 @@
 <h2>Repúblicas Disponíveis</h2>
+
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Buscar República</mat-label>
+        <input #nomeRepublica name="nome" matInput placeholder="Nome da república">
+    </mat-form-field>
+    <button name="buscar" mat-flat-button color="primary" (click)="buscar(nomeRepublica.value)">Buscar</button>
+</div>
+
 <table mat-table [dataSource]="republicas" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">

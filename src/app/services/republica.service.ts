@@ -77,4 +77,8 @@ export class RepublicaService {
     return this.http.post<boolean>(`${this.republicasUrl}/${this.republica.id}/adicionarmorador/`, morador);
   }
 
+  public getRepublicasByName(name : String) {
+    return this.http.get<Republica[]>(`${this.republicasUrl}/${name}/busca`);
+  }
+
 }

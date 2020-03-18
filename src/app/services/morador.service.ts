@@ -53,4 +53,9 @@ export class MoradorService {
   public setMorador(morador: Morador) {
     this.morador = morador;
   }
+
+  public getMoradoresByName(name : String) {
+    return this.http.get<Morador[]>(`${this.moradoresUrl}/${name}/busca`);
+  }
+
 }

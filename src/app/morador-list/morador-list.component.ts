@@ -11,7 +11,6 @@ import { HistoricoDialogComponent } from '../historico-dialog/historico-dialog.c
   styleUrls: ['./morador-list.component.css']
 })
 export class MoradorListComponent implements OnInit {
-
   moradores: Morador[];
   displayedColumns: string[] = ['id', 'nome', 'acoes'];
 
@@ -33,5 +32,11 @@ export class MoradorListComponent implements OnInit {
 
   onConvidar(morador: Morador) {
     
+  }
+
+  buscar(name: String) {
+    this.moradorService.getMoradoresByName(name).subscribe(data => {
+      this.moradores = data;
+    })
   }
 }

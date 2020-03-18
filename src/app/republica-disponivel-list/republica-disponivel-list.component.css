@@ -5,3 +5,9 @@ table {
 .cards {
     padding: 10px;
 }
+
+div {
+    top: initial;
+    position: relative;
+    float: right;
+}
