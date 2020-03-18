@@ -5,6 +5,7 @@ import { RepublicaService } from '../services/republica.service';
 import { Morador } from '../models/morador';
 import { MoradorService } from '../services/morador.service';
 import { Endereco } from '../models/endereco';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-republica-form',
@@ -18,6 +19,7 @@ export class RepublicaFormComponent implements OnInit {
   moradores: Morador[];
 
   constructor(private route: ActivatedRoute, private router: Router,
+              private loginService: LoginService,
               private republicaService: RepublicaService, private moradorService: MoradorService) {
     this.republica = new Republica();
     this.endereco = new Endereco();
@@ -32,10 +34,8 @@ export class RepublicaFormComponent implements OnInit {
 
   onSubmit() {
     this.republica.endereco = this.endereco;
-
-    console.log(this.endereco);
-
     if (this.republica.id === undefined) {
+      this.republica.representante = this.loginService.getMorador();
       this.republicaService.save(this.republica).subscribe(result => {
         this.router.navigate(['/republicas']);
         alert('República adicionada com sucesso!');
