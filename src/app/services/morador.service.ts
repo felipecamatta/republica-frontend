@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Morador } from '../models/morador';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class MoradorService {
   private morador = new Morador();
 
   constructor(private http: HttpClient) {
-    this.moradoresUrl = 'http://localhost:8080/moradores';
+    this.moradoresUrl = `${environment.apiUrl}/moradores`;
   }
 
   form: FormGroup = new FormGroup({

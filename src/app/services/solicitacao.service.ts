@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Morador } from '../models/morador';
 import { Republica } from '../models/republica';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class SolicitacaoService {
   private solicitacao: Number[];
 
   constructor(private http: HttpClient) {
-    this.solicitacaoUrl = 'http://localhost:8080/solicitacao';
+    this.solicitacaoUrl = `${environment.apiUrl}/solicitacao`;
   }
 
   public solicitar(republica: Republica, morador: Morador){

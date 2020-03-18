@@ -5,6 +5,7 @@ import { Tarefa } from '../models/tarefa';
 import { TarefaDto } from '../models/tarefa-dto';
 import { Republica } from '../models/republica';
 import { Morador } from '../models/morador';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class TarefaService {
   private tarefa = new Tarefa();
 
   constructor(private http: HttpClient) {
-    this.tarefaUrl = 'http://localhost:8080/tarefas';
+    this.tarefaUrl = `${environment.apiUrl}/tarefas`;
   }
 
   form: FormGroup = new FormGroup({

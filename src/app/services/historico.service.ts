@@ -3,6 +3,7 @@ import { Historico } from '../models/historico';
 import { HttpClient } from '@angular/common/http';
 import { Morador } from '../models/morador';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class HistoricoService {
   private historico = new Historico();
 
   constructor(private http: HttpClient) {
-    this.historicoURL = 'http://localhost:8080/morador/historicos';
+    this.historicoURL = `${environment.apiUrl}/morador/historicos`;
   }
 
   public save(historico: Historico) {

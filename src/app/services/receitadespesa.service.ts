@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MoradorReceitaDespesaDto } from '../models/morador-receita-despesa-dto';
 import { Morador } from '../models/morador';
 import { Republica } from '../models/republica';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ReceitadespesaService {
   private receitaDespesa = new ReceitaDespesa();
 
   constructor(private http: HttpClient) {
-    this.receitaDespesaUrl = 'http://localhost:8080/republica/receitasdespesas';
+    this.receitaDespesaUrl = `${environment.apiUrl}/republica/receitasdespesas`;
   }
 
   form: FormGroup = new FormGroup({

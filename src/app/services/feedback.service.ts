@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Republica } from '../models/republica';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Morador } from '../models/morador';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class FeedbackService {
   private feedback = new Feedback();
 
   constructor(private http: HttpClient) {
-    this.feedbackUrl = 'http://localhost:8080/feedback';
+    this.feedbackUrl = `${environment.apiUrl}/feedback`;
   }
 
   form: FormGroup = new FormGroup({

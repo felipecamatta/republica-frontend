@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Morador } from '../models/morador';
 import { ThrowStmt } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class RepublicaService {
   private moradores: Morador[];
 
   constructor(private http: HttpClient) {
-    this.republicasUrl = 'http://localhost:8080/republicas';
+    this.republicasUrl = `${environment.apiUrl}/republicas`;
   }
 
   form: FormGroup = new FormGroup({

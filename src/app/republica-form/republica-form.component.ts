@@ -18,19 +18,23 @@ export class RepublicaFormComponent implements OnInit {
   moradores: Morador[];
 
   constructor(private route: ActivatedRoute, private router: Router,
-    private republicaService: RepublicaService, private moradorService: MoradorService) {
+              private republicaService: RepublicaService, private moradorService: MoradorService) {
     this.republica = new Republica();
     this.endereco = new Endereco();
   }
 
   ngOnInit() {
     this.republica = this.republicaService.getRepublica();
-    if (this.republica != null)
+    if (this.republica.endereco !== undefined) {
       this.endereco = this.republica.endereco;
+    }
   }
 
   onSubmit() {
     this.republica.endereco = this.endereco;
+
+    console.log(this.endereco);
+
     if (this.republica.id === undefined) {
       this.republicaService.save(this.republica).subscribe(result => {
         this.router.navigate(['/republicas']);
