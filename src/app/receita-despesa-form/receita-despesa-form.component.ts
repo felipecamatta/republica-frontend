@@ -9,6 +9,7 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-mo
 import { Morador } from '../models/morador';
 import { MoradorService } from '../services/morador.service';
 import { MoradorReceitaDespesaDto } from '../models/morador-receita-despesa-dto';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-receita-despesa-form',
@@ -24,21 +25,27 @@ export class ReceitaDespesaFormComponent implements OnInit {
 
   receitaDespesaDto: MoradorReceitaDespesaDto;
   republicas: Republica[];
-  moradores: Morador[];
   moradoresIncluidos: Morador[] = new Array();
   republica: Republica;
 
   constructor(private router: Router, private receitaDespesaService: ReceitadespesaService,
-              private republicaService: RepublicaService) {
+              private republicaService: RepublicaService,
+              private loginService: LoginService) {
     this.receitaDespesaDto = new MoradorReceitaDespesaDto();
   }
 
   ngOnInit() {
     //this.receitaDespesaDto = this.receitaDespesaService.getReceitaDespesa();
+    this.republicaService.find(this.loginService.getMorador().id).subscribe(data => {
+      this.republica = data;
+    });
+
   }
 
   onSubmit() {
+
     if (this.receitaDespesaDto.id === undefined) {
+      this.receitaDespesaDto.republica = this.republica;
       this.receitaDespesaDto.moradores = this.moradoresIncluidos;
       this.receitaDespesaService.save(this.receitaDespesaDto).subscribe(result => {
         this.router.navigate(['/republica/financas']);
@@ -53,11 +60,10 @@ export class ReceitaDespesaFormComponent implements OnInit {
   }
 
   onChange(value) {
-    this.republica = value;
+/*    this.republica = value;
     this.republicaService.getMoradores(this.republica).subscribe(data => {
       this.moradores = data;
-    });
-    this.ngOnInit();
+    });*/
   }
 
   onCheck(value, isChecked) {

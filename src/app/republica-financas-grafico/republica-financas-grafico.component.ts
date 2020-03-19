@@ -10,6 +10,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { Moment } from 'moment';
+import { LoginService } from '../services/login.service';
 
 const moment = _moment;
 
@@ -56,7 +57,8 @@ export class RepublicaFinancasGraficoComponent implements OnInit {
   receitas = [];
   despesas = [];
 
-  constructor(private chartService: ChartService) {
+  constructor(private chartService: ChartService,
+              private loginService: LoginService) {
     const data = new Date();
     this.mes =  data.getMonth() + 1;
     this.ano = data.getFullYear();
@@ -64,7 +66,7 @@ export class RepublicaFinancasGraficoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.republica.id = 1;
+    this.republica.id = this.loginService.getMorador().republica.id;
 
     this.getDados().then(() => {
       this.getLabels();
@@ -109,6 +111,7 @@ export class RepublicaFinancasGraficoComponent implements OnInit {
   }
 
   getLabels() {
+    console.log(this.dataChart);
     this.labels = new Set(Object.keys(this.dataChart.despesas)
     .concat(Object.keys(this.dataChart.receitas))
     .sort());

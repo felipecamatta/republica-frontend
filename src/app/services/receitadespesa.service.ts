@@ -22,7 +22,7 @@ export class ReceitadespesaService {
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
-    republica: new FormControl('', Validators.required),
+    republica: new FormControl(''),
     tipo: new FormControl('', Validators.required),
     descricao: new FormControl('', Validators.required),
     valor: new FormControl('', Validators.required),
