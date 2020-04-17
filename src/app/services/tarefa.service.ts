@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Tarefa } from '../models/tarefa';
 import { TarefaDto } from '../models/tarefa-dto';
 import { Republica } from '../models/republica';
 import { Morador } from '../models/morador';
@@ -13,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class TarefaService {
 
   private tarefaUrl: string;
-  private tarefa = new Tarefa();
+  private tarefa = new TarefaDto();
 
   constructor(private http: HttpClient) {
     this.tarefaUrl = `${environment.apiUrl}/tarefas`;
@@ -26,26 +25,26 @@ export class TarefaService {
   });
 
   public findByRepublica(republica: Republica) {
-    return this.http.get<Tarefa[]>(`${this.tarefaUrl}/republica/${republica.id}`);
+    return this.http.get<TarefaDto[]>(`${this.tarefaUrl}/republica/${republica.id}`);
   }
 
   public findByMorador(morador: Morador) {
-    return this.http.get<Tarefa[]>(`${this.tarefaUrl}/republica/${morador.republica.id}/morador/${morador.id}`);
+    return this.http.get<TarefaDto[]>(`${this.tarefaUrl}/republica/${morador.republica.id}/morador/${morador.id}`);
   }
 
   public save(tarefaDto: TarefaDto) {
     return this.http.post<TarefaDto>(this.tarefaUrl, tarefaDto);
   }
 
-  public update(tarefa: Tarefa) {
-    return this.http.put<Tarefa>(`${this.tarefaUrl}/${tarefa.id}`, tarefa);
+  public update(tarefa: TarefaDto) {
+    return this.http.put<TarefaDto>(`${this.tarefaUrl}/${tarefa.id}`, tarefa);
   }
 
-  public delete(tarefa: Tarefa) {
+  public delete(tarefa: TarefaDto) {
     return this.http.delete<void>(`${this.tarefaUrl}/${tarefa.id}`);
   }
 
-  public realizarTarefa(morador: Morador, tarefa: Tarefa) {
+  public realizarTarefa(morador: Morador, tarefa: TarefaDto) {
     return this.http.post<void>(`${this.tarefaUrl}/republica/${morador.republica.id}/morador/${morador.id}/realizar`, tarefa);
   }
 
@@ -53,7 +52,7 @@ export class TarefaService {
     return this.tarefa;
   }
 
-  public setTarefa(tarefa: Tarefa) {
+  public setTarefa(tarefa: TarefaDto) {
     this.tarefa = tarefa;
   }
 

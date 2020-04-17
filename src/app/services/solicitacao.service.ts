@@ -12,33 +12,24 @@ import { environment } from 'src/environments/environment';
 export class SolicitacaoService {
 
   private solicitacaoUrl: string;
-  private morador: Morador;
-  private solicitacao: Number[];
+  private solicitacao: number[];
 
   constructor(private http: HttpClient) {
     this.solicitacaoUrl = `${environment.apiUrl}/solicitacao`;
   }
 
-  public solicitar(republica: Republica, morador: Morador){
+  public solicitar(republica: Republica, morador: Morador) {
     this.solicitacao = [];
     this.solicitacao.push(republica.id);
     this.solicitacao.push(morador.id);
     return this.http.post<Solicitacao>(this.solicitacaoUrl, this.solicitacao);
   }
 
-  public delete(id: number){
+  public delete(id: string) {
     return this.http.delete<void>(`${this.solicitacaoUrl}/${id}`);
   }
 
-  public findAll(id: number): Observable<Solicitacao[]> {
+  public findAll(id: string): Observable<Solicitacao[]> {
     return this.http.get<Solicitacao[]>(`${this.solicitacaoUrl}/${id}`);
-  }
-
-  public getMorador(): Morador {
-    return this.morador;
-  }
-
-  public setMorador(m: Morador) {
-    this.morador = m;
   }
 }

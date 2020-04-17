@@ -1,0 +1,39 @@
+<div>
+    <h1>Login</h1>
+</div>
+
+<div class="container">
+    <form class="login-form">
+        <mat-form-field>
+            <mat-label for="email">Usuário</mat-label>
+            <input id="username" [(ngModel)]="form.username" matInput 
+                placeholder="Digite seu usuário" name="username"
+                required minlength="3" maxlength="20">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field>
+            <mat-label for="pwd">Senha</mat-label>
+            <input [(ngModel)]="form.email" id="email" matInput 
+                placeholder="Digite seu email" name="email">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field>
+            <mat-label for="pwd">Senha</mat-label>
+            <input [(ngModel)]="form.password" id="password" matInput 
+                placeholder="Digite sua senha" name="password"
+                required minlength="6">
+        </mat-form-field>
+
+        <button class="botao" mat-raised-button color="primary" (click)="handleRegister()">Realizar Login</button>
+
+        <br>
+        <br>
+
+        <div class="alert alert-warning" *ngIf='isSignUpFailed'>{{errorMessage}}</div>
+        <div class="alert alert-success" *ngIf='isSuccessful'>{{successMessage}}</div>
+    </form>
+</div>

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Republica } from '../models/republica';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Morador } from '../models/morador';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -30,8 +29,8 @@ export class FeedbackService {
     return this.http.get<Feedback[]>(`${this.feedbackUrl}/republica/${republica.id}`);
   }
 
-  public findByMorador(morador: Morador): Observable<Feedback[]> {
-    return this.http.get<Feedback[]>(`${this.feedbackUrl}/republica/${morador.republica.id}/morador/${morador.id}`);
+  public findByRepublicaAndMorador(idRepublica: string, idMorador: string): Observable<Feedback[]> {
+    return this.http.get<Feedback[]>(`${this.feedbackUrl}/republica/${idRepublica}/morador/${idMorador}`);
   }
 
   public save(feedback: Feedback) {

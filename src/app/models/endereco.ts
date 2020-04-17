@@ -1,10 +1,10 @@
 export class Endereco {
     id: number;
-    logradouto: string;
+    logradouro: string;
     cep: string;
     bairro: string;
     cidade: string;
     estado: string;
-    pontoDereferencia: string;
+    pontoDeReferencia: string;
     localizacaoGeografica: string;
 }

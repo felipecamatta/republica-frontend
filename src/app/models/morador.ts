@@ -10,7 +10,7 @@ export class Morador {
     linkRedeSocial: string;
     telefoneResponsavel1: string;
     telefoneResponsavel2: string;
-    sexo: String;
+    sexo: string;
     representante: boolean;
     republica: Republica;
     moradorReceitaDespesas: MoradorReceitaDespesa[];

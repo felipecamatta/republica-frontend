@@ -34,6 +34,10 @@ export class MoradorService {
     return this.http.get<Morador[]>(this.moradoresUrl);
   }
 
+  public getMoradorById(id: string): Observable<Morador> {
+    return this.http.get<Morador>(`${this.moradoresUrl}/${id}`);
+  }
+
   public save(morador: Morador) {
     return this.http.post<Morador>(this.moradoresUrl, morador);
   }
@@ -46,16 +50,16 @@ export class MoradorService {
     return this.http.delete<void>(`${this.moradoresUrl}/${id}`);
   }
 
+  public getMoradoresByName(name: string) {
+    return this.http.get<Morador[]>(`${this.moradoresUrl}/${name}/busca`);
+  }
+
   public getMorador() {
     return this.morador;
   }
 
   public setMorador(morador: Morador) {
     this.morador = morador;
-  }
-
-  public getMoradoresByName(name : String) {
-    return this.http.get<Morador[]>(`${this.moradoresUrl}/${name}/busca`);
   }
 
 }
