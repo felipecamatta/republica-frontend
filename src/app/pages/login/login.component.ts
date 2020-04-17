@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthenticationService, 
-    private tokenStorage: TokenStorageService,
-    private router: Router) {   }
+  constructor(private authService: AuthenticationService,
+              private tokenStorage: TokenStorageService,
+              private router: Router) {   }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorage.getToken();
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    console.log(this.form)
+    console.log(this.form);
     this.authService.login(this.form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.token);

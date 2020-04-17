@@ -63,6 +63,7 @@ export class MainNavComponent implements OnInit {
           if (this.morador.republica.id !== undefined) {
               this.idRepublica = this.morador.republica.id.toString();
               localStorage.setItem('idRepublica', this.idRepublica);
+              this.router.navigate(['republica/gerencia']);
           }
 
           this.atualizarListaSolicitacoes();
