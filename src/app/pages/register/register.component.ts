@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,22 +15,25 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
   successMessage = 'Cadastro realizado com sucesso!';
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
   handleRegister() {
-    this.authService.register(this.form).subscribe(
-      data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+    if (this.form.password === this.form.passwordConfirmation) {
+      this.authService.register(this.form).subscribe(
+        data => {
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+          this.router.navigate(['/login']);
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
+    }
   }
 }

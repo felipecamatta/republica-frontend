@@ -26,7 +26,8 @@ export class AuthenticationService {
     return this.http.post(`${environment.apiUrl}/auth/signup`, {
       username: user.username,
       email: user.email,
-      password: user.password
+      password: user.password,
+      role: ['user']
     }, httpOptions);
   }
   
